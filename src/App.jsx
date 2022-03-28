@@ -53,11 +53,38 @@ function App() {
 			},
 		]);
 	};
+
+	const genBoxShadow = () => {
+		let boxshadow = shadows[0].isActive
+			? `${shadows[0].horizontalOffset}px ${shadows[0].verticalOffset}px ${
+					shadows[0].blurRadius
+			  }px ${shadows[0].spreadRadius}px ${shadows[0].color} ${
+					shadows[0].isInset ? "inset" : ""
+			  }`
+			: "";
+
+		shadows.forEach((shad, i) => {
+			if (i != 0) {
+				let tmpShad = shadows[i].isActive
+					? `, ${shadows[i].horizontalOffset}px ${
+							shadows[i].verticalOffset
+					  }px ${shadows[i].blurRadius}px ${shadows[i].spreadRadius}px ${
+							shadows[i].color
+					  } ${shadows[i].isInset ? "inset" : ""}`
+					: "";
+
+				boxshadow = boxshadow + tmpShad;
+			}
+		});
+		// console.log(boxshadow);
+		return boxshadow;
+	};
+
 	return (
 		<>
 			<Layout>
 				<Header className="header">
-					<Navbar />
+					<Navbar boxShadow={genBoxShadow()} />
 				</Header>
 				<Layout className="main">
 					<Sider width={350} className="sidebar" theme="light">
@@ -78,8 +105,10 @@ function App() {
 								borderRadius: `${porperties.borderRadius}rem`,
 								height: `${porperties.height}rem`,
 								width: `${porperties.width}rem`,
+								boxShadow: genBoxShadow(),
 							}}
-							className="target"></div>
+							className="target"
+						/>
 					</Content>
 					<Sider width={350} className="sidebar" theme="light">
 						<SideBarRight

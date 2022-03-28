@@ -84,3 +84,13 @@
 	justify-content: center;
 	align-items: center;
 }
+.ant-modal-content {
+	width: 80vw;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.code {
+	font-size: 1.2rem;
+	width: 100%;
+	overflow: auto;
+}
