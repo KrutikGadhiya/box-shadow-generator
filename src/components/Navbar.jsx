@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button, Modal, Typography } from "antd";
 import { GithubOutlined } from "@ant-design/icons";
 
+import logo from "../../logo.png";
+
 const { Paragraph, Text } = Typography;
 
 const Navbar = ({ boxShadow }) => {
@@ -15,7 +17,10 @@ const Navbar = ({ boxShadow }) => {
 
 	return (
 		<>
-			<Text className="title">Box Shadow Generator</Text>
+			<Text className="title">
+				<img className="logo" width={30} src={logo} alt="logo" />
+				Box Shadow Generator
+			</Text>
 			<div>
 				<a
 					href="https://github.com/KrutikGadhiya/box-shadow-generator"
